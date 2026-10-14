@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
-import { ArrowRight, AudioLines, ChevronDown, Clock3, Flag, History, Keyboard, Medal, Pause, Play, RotateCcw, Settings2, Sparkles, Swords, Trophy, Volume2, VolumeX, X } from 'lucide-react';
+import { ArrowRight, ChevronDown, Clock3, Flag, History, Keyboard, Medal, Pause, Play, RotateCcw, Settings2, Sparkles, Swords, Trophy, Volume2, VolumeX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
@@ -110,7 +110,7 @@ function MathGame() {
   const openHistory = () => { if (playing) dispatch({ type: 'pause' }); setHistoryOpen(true); };
   const winnerText = match.winner === null ? "It's a tie!" : `Team ${match.winner + 1} wins!`;
   const wins: [number, number] = [history.filter(record => record.winner === 0).length, history.filter(record => record.winner === 1).length];
-  return <div className="app-shell">
+  return <div className={`app-shell ${locked ? 'match-is-active' : ''}`}>
     <header className="site-header"><div className="header-inner">
       <a href="/" className="brand" aria-label="Tug of Math home"><span className="brand-mark"><Swords size={23} /></span><span>Tug of<span className="brand-math"> Math</span><span className="brand-dot">.</span></span></a>
       <span className="classroom-badge"><span /> CLASSROOM EDITION</span>

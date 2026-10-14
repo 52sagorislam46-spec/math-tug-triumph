@@ -307,3 +307,13 @@ button.setting-active { background: var(--card); color: var(--foreground); box-s
   .player-content { padding-top: 13px; }
 }
 @media(max-width:390px) { .page-heading h1 { font-size: 25px; } }
+@media(max-width:760px) {
+  .match-is-active .page-heading, .match-is-active .settings-bar { display: none; }
+  .match-is-active .center-stage { padding-top: 14px; }
+  .match-is-active .arena-illustration { height: 125px; }
+  .match-is-active .arena-state { font-size: 6px; top: 5px; }
+  .match-is-active .player-content { padding-top: 10px; }
+  .match-is-active .math-problem { margin-top: 5px; margin-bottom: 8px; }
+  .match-is-active .answer-display { min-height: 40px; margin-bottom: 9px; }
+  .match-is-active .match-bottom { margin-top: 20px; }
+}
