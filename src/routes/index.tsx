@@ -28,7 +28,7 @@ function isRecord(value: unknown): value is RecordMatch {
 }
 function MathGame() {
   const [settings, setSettings] = useState<Settings>(initialSettings);
-  const [match, dispatch] = useReducer(matchReducer, initialSettings, newMatch);
+  const [match, dispatch] = useReducer(matchReducer, initialSettings, (value) => newMatch(value, true));
   const [muted, setMuted] = useState(false);
   const [history, setHistory] = useState<RecordMatch[]>([]);
   const [historyOpen, setHistoryOpen] = useState(false);

@@ -15,8 +15,9 @@ export function makeProblem(operation: Operation, difficulty: Difficulty): Probl
   if (op === 'division') return { a: a * b, b, symbol: '÷', answer: a };
   return { a, b, symbol: op === 'addition' ? '+' : '×', answer: op === 'addition' ? a + b : a * b };
 }
-export function newMatch(settings: Settings): Match {
-  const player = (): Player => ({ score: 0, attempts: 0, input: '', problem: makeProblem(settings.operation, settings.difficulty), feedback: null });
+export function newMatch(settings: Settings, preview = false): Match {
+  let team = 0;
+  const player = (): Player => ({ score: 0, attempts: 0, input: '', problem: preview ? (team++ === 0 ? { a: 9, b: 6, symbol: '×', answer: 54 } : { a: 10, b: 4, symbol: '×', answer: 40 }) : makeProblem(settings.operation, settings.difficulty), feedback: null });
   return { id: '', status: 'ready', remaining: settings.duration, countdown: 3, players: [player(), player()], winner: null, elapsed: 0, reason: 'time' };
 }
 export type Action = { type: 'reset'; settings: Settings } | { type: 'start' } | { type: 'tick' } | { type: 'pause' } | { type: 'input'; team: 0 | 1; key: string; settings: Settings } | { type: 'clearFeedback'; team: 0 | 1 };
